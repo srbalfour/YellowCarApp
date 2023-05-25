@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import TopBarComponent from './TopBar';
-
+import TopBarComponent from './components/TopBar';
+import colours from './constants/colours';
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
         <TopBarComponent></TopBarComponent>
 
 
-        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Yellow Car! I win. Toot Toot.</Text>
 
 
         <StatusBar style="auto" />
@@ -24,8 +24,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    backgroundColor: colours.backgroundMain,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
 });
