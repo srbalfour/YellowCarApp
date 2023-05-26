@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TopBarComponent from './components/TopBar';
 import BottomBar from './components/BottomBar';
+import PlayGame from './Pages/YellowCarGame';
 import colours from './constants/colours';
 import { PaperProvider } from 'react-native-paper';
 
@@ -19,7 +20,7 @@ export default function App() {
 
 
           <Text>Yellow Car! I win. Toot Toot.</Text>
-
+          <PlayGame></PlayGame>
           
 
           <StatusBar style="auto" />
