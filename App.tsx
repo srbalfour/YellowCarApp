@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TopBarComponent from './components/TopBar';
+import BottomBar from './components/BottomBar';
 import colours from './constants/colours';
 import { PaperProvider } from 'react-native-paper';
 
@@ -19,8 +20,12 @@ export default function App() {
 
           <Text>Yellow Car! I win. Toot Toot.</Text>
 
+          
 
           <StatusBar style="auto" />
+
+          <BottomBar></BottomBar>
+
         </View>
       </SafeAreaProvider>
     </PaperProvider>
@@ -32,7 +37,5 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     backgroundColor: colours.backgroundMain,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
   },
 });
