@@ -4,17 +4,16 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import colours from '../constants/colours';
 import App from '../App';
 
-
-
 const TopBarComponent = () => (
 
     <Appbar.Header style={Styles.TopBar}>
         {/* <Appbar.BackAction onPress={() => { }} /> */}
-        <Appbar.Action icon="menu" onPress={() => { }} />
         <Appbar.Content
-            title={<Text>Yellow Car</Text>}
-            style={{ justifyContent:'center' }}
+            title="Yellow Car"
+            titleStyle={{ fontWeight: 'bold', color: colours.textPrimary }}
+            style={{ justifyContent: 'center' }}
         />
+        <Appbar.Action size={20} color={colours.textSecondary} icon="gears" style = {{ paddingRight: 10 }} onPress={() => { }} />
     </Appbar.Header>
 
 );
@@ -25,7 +24,13 @@ const Styles = StyleSheet.create({
         padding: 20,
         backgroundColor: colours.backgroundNav,
         width: '100%',
-        fontWeight: 'bold'
+        setFontWeight: {
+            fontWeight: 'bold',
+        },
+        setColour: {
+            color: colours.textPrimary,
+        },
+        
 
 
 
