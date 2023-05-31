@@ -19,7 +19,6 @@ export default function App() {
           <TopBarComponent></TopBarComponent>
 
 
-          <Text>Yellow Car! I win. Toot Toot.</Text>
           <PlayGame></PlayGame>
           
 
