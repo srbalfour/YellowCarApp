@@ -7,6 +7,7 @@ import { PaperProvider } from 'react-native-paper';
 import { Card, Button, Text } from 'react-native-paper';
 import React, { Component, useState } from 'react';
 import { SegmentedButtons } from 'react-native-paper';
+import {ScrollView  } from 'react-native';
 
 const PlayGame = () => {
     const [players, setPlayers] = useState([
@@ -17,11 +18,11 @@ const PlayGame = () => {
     const [value, setValue] = React.useState('');           //for the segmented buttons
 
     return (
-        <View>
+        <ScrollView style={gameStyles.scroll}>
             {
                 players.map((player) => {
                     return (
-                        <Card style={gameStyles.game} key={player.id}>
+                        <Card style={[gameStyles.game, gameStyles.card]} key={player.id}>
                             <Card.Title title={player.username} />
 
                             <Card.Content>
@@ -48,7 +49,7 @@ const PlayGame = () => {
                                         />
                                     </View>
 
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{ flex: 1,  alignItems: 'center' }}>
                                         <Text style={gameStyles.score}>{player.score}</Text>
                                     </View>
 
@@ -92,7 +93,7 @@ const PlayGame = () => {
             <Button style={gameStyles.new} onPress={() => {
                 setPlayers(players => [...players, { id: players.length, username: `Player${players.length}`, score: 0 }]);
             }}>Add new player</Button>
-        </View >
+        </ScrollView >
     )
 };
 
@@ -101,25 +102,32 @@ const PlayGame = () => {
 const gameStyles = StyleSheet.create({
     game: {
         backgroundColor: colours.backgroundNav,
-        width: '100%',
-
+    },
+    card: {
+        margin: 10,
     },
     buttons: {
         backgroundColor: colours.backgroundMain,
-        padding: 0,
         borderRadius: 25,
         color: colours.textSecondary,
+        justifyContent: 'center',
+
     },
     flex: {
         flexDirection: 'row',
     },
     score: {
         color: colours.textPrimary,
-        fontSize: 28,
+        fontSize: 40,
         fontWeight: 'bold',
+        justifyContent: 'center',
+
     },
     new: {
         backgroundColor: colours.backgroundMain,
+    },
+    scroll: {
+        marginBottom: 80,
     },
 
 });
