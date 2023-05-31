@@ -24,47 +24,72 @@ const PlayGame = () => {
                         <Card style={gameStyles.game} key={player.id}>
                             <Card.Title title={player.username} />
 
-                            <SegmentedButtons
-                                style={gameStyles.buttons}
-                                value={value}
-                                onValueChange={setValue}
-                                buttons={[
-                                    {
-                                        value: 'add three',
-                                        label: '+ 3',
-                                    },
-                                    {
-                                        value: 'add one',
-                                        label: '+ 1'
-                                    },
-                                ]}
-                            />
-                            
-                            <Text>Score: {player.score}</Text>
+                            <Card.Content>
+                                <View style={[gameStyles.flex,]}>
+                                    <View style={{ flex: 2 }}>
+                                        <SegmentedButtons
+                                            style={gameStyles.buttons}
+                                            value={value}
+                                            onValueChange={setValue}
+                                            buttons={[
+                                                {
+                                                    value: 'add three',
+                                                    label: '+ 3',
+                                                    uncheckedColor: colours.textSecondary,
+                                                    checkedColor: colours.textSecondary,
+                                                },
+                                                {
+                                                    value: 'add one',
+                                                    label: '+ 1',
+                                                    uncheckedColor: colours.textSecondary,
+                                                    checkedColor: colours.textSecondary,
+                                                },
+                                            ]}
+                                        />
+                                    </View>
+
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={gameStyles.score}>{player.score}</Text>
+                                    </View>
+
+                                    <View style={{ flex: 2 }}>
+                                        <SegmentedButtons
+                                            style={gameStyles.buttons}
+                                            value={value}
+                                            onValueChange={setValue}
+                                            buttons={[
+                                                {
+                                                    value: 'remove one',
+                                                    label: '- 1',
+                                                    uncheckedColor: colours.textSecondary,
+                                                    checkedColor: colours.textSecondary,
+                                                },
+                                                {
+                                                    value: 'remove three',
+                                                    label: '- 3',
+                                                    uncheckedColor: colours.textSecondary,
+                                                    checkedColor: colours.textSecondary,
+                                                },
+                                            ]}
+                                        />
+                                    </View>
 
 
-                            <SegmentedButtons
-                                style={gameStyles.buttons}
-                                value={value}
-                                onValueChange={setValue}
-                                buttons={[
-                                    {
-                                        value: 'remove one',
-                                        label: '- 1',
-                                    },
-                                    {
-                                        value: 'remove three',
-                                        label: '- 3'
-                                    },
-                                ]}
-                            />
+                                </View>
+                            </Card.Content>
+
+
+
+
+
+
 
 
                         </Card>
                     )
                 })
             }
-            <Button onPress={() => {
+            <Button style={gameStyles.new} onPress={() => {
                 setPlayers(players => [...players, { id: players.length, username: `Player${players.length}`, score: 0 }]);
             }}>Add new player</Button>
         </View >
@@ -76,9 +101,24 @@ const PlayGame = () => {
 const gameStyles = StyleSheet.create({
     game: {
         backgroundColor: colours.backgroundNav,
+        width: '100%',
 
     },
     buttons: {
+        backgroundColor: colours.backgroundMain,
+        padding: 0,
+        borderRadius: 25,
+        color: colours.textSecondary,
+    },
+    flex: {
+        flexDirection: 'row',
+    },
+    score: {
+        color: colours.textPrimary,
+        fontSize: 28,
+        fontWeight: 'bold',
+    },
+    new: {
         backgroundColor: colours.backgroundMain,
     },
 
