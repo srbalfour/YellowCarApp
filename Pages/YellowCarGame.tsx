@@ -3,27 +3,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Touchable, TouchableOpacity, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import colours from '../constants/colours';
-import { PaperProvider } from 'react-native-paper';
+import { IconButton, PaperProvider } from 'react-native-paper';
 import { Card, Button, Text } from 'react-native-paper';
 import React, { Component, useState } from 'react';
 import { SegmentedButtons } from 'react-native-paper';
 import { ScrollView } from 'react-native';
 import { Dialog, Portal } from 'react-native-paper';
 import NewPlayer from '../components/NewPlayer';
-import {SafeAreaView, TextInput} from 'react-native';
+import { SafeAreaView, TextInput } from 'react-native';
+import Icon from 'react-native-paper/lib/typescript/src/components/Icon';
 
 
 const PlayGame = () => {
     const [players, setPlayers] = useState([
-        { id: 0, username: "Player0", score: 0 },
-        { id: 1, username: "Player1", score: 0 },
+        // { id: 0, username: "Player0", score: 0 },
+        // { id: 1, username: "Player1", score: 0 },
     ]);
 
 
     const [value, setValue] = React.useState('');           //for the segmented buttons
     const [newPlayerVisible, setNewPlayerVisible] = React.useState(false);
 
-    
+
 
 
 
@@ -38,12 +39,22 @@ const PlayGame = () => {
 
                     idAscending.map((player) => {
                         return (
+
                             <Card style={[gameStyles.game]} key={player.id}>
-                                <Card.Title titleVariant='titleLarge' titleStyle={{ alignSelf: 'center', color: colours.textPrimary, fontWeight: 'bold' }} title={player.username} />
+
+                                <Card.Title titleVariant='titleLarge' titleStyle={{ color: colours.textPrimary, fontWeight: 'bold' }} title={player.username}
+                                    right={(props) => <TouchableOpacity {...props}>
+                                        <IconButton icon="window-close" iconColor={colours.textSecondary} onPress={() => setPlayers((players) => {
+                                            return players.filter((p) => p.id !== player.id)
+                                        })}/>
+                                    </TouchableOpacity>} />
 
                                 <Card.Content>
                                     <View style={[gameStyles.flex]}>
                                         <View style={{ flex: 2 }}>
+
+
+
                                             <TouchableOpacity>
                                                 <SegmentedButtons
                                                     style={gameStyles.buttons}
@@ -85,6 +96,9 @@ const PlayGame = () => {
                                                     ]}
                                                 />
                                             </TouchableOpacity>
+
+
+
                                         </View>
 
                                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -151,7 +165,7 @@ const PlayGame = () => {
                     }}>Add new player</Button>
                 </TouchableOpacity>
 
-                <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers}  onClose={() => setNewPlayerVisible(false)}></NewPlayer> 
+                <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers} onClose={() => setNewPlayerVisible(false)}></NewPlayer>
 
             </View>
         </ScrollView>
@@ -183,10 +197,13 @@ const gameStyles = StyleSheet.create({
     },
     new: {
         backgroundColor: colours.backgroundMain,
+        colour: colours.textPrimary,
+
     },
     scroll: {
         marginBottom: 80,
     },
+
 
 });
 

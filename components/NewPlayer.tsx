@@ -23,14 +23,15 @@ const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
   return (
     <View>
       <Portal>
-        <Dialog visible={visible} onDismiss={onClose}>
-          <Dialog.Title>Player Name</Dialog.Title>
+        <Dialog visible={visible} onDismiss={onClose} style={dialogStyles.dialog}>
+          <Dialog.Title style={{ color: colours.textPrimary }}>Player Name</Dialog.Title>
           <Dialog.Content>
-            <Text variant="bodyMedium">Please Enter Your Name:</Text>
+            <Text style={{ color:colours.textSecondary }} variant="bodyMedium">Please Enter Your Name:</Text>
             <SafeAreaView>
               <TextInput
                 style={dialogStyles.input}
                 onChangeText={setName}
+                placeholder='My Name'
                 value={name}
               />
 
@@ -58,7 +59,10 @@ const dialogStyles = StyleSheet.create({
     padding: 10,
     backgroundColor: colours.backgroundMain,
     color: colours.textPrimary,
-
+  },
+  dialog: {
+    backgroundColor: colours.backgroundNav,
+    color: colours.textPrimary,
   },
 
 });
