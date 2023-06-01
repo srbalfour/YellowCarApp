@@ -4,15 +4,17 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import colours from '../constants/colours';
 import App from '../App';
 import { BottomNavigation } from 'react-native-paper';
+import PlayGame from '../Pages/YellowCarGame';
+import Counter from '../Pages/Counter';
 
 
 const BottomBar = () => (
     <Appbar style={bottomStyles.bottom}>
-        <Appbar.Action icon="play" onPress={() => { }} />
+        <Appbar.Action icon="play" iconColor={colours.textSecondary} onPress={() => {  }} />
 
         <View style={bottomStyles.verticalLine}></View>
 
-        <Appbar.Action icon="unsorted" onPress={() => { }} />
+        <Appbar.Action icon="unsorted" iconColor={colours.textSecondary}  onPress={() => {  }} />
 
     </Appbar>
 );
@@ -28,7 +30,6 @@ const bottomStyles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        color: colours.textSecondary,
         backgroundColor: colours.backgroundMain,
         borderTopWidth: 2,
         borderTopColor: colours.backgroundNav,
