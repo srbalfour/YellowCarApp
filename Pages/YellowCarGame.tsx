@@ -17,6 +17,11 @@ const PlayGame = () => {
 
     const [value, setValue] = React.useState('');           //for the segmented buttons
 
+    const idAscending = [...players].sort((a, b) => a.id - b.id);
+    console.log(idAscending);
+    
+    
+
     return (
         <ScrollView style={gameStyles.scroll}>
             <View style={{ flex: 1, gap: 10, marginTop: 10, marginHorizontal: 10 }}>
@@ -25,7 +30,7 @@ const PlayGame = () => {
                      * sort order players are displayed in based on ID
                      ******************************/
 
-                    players.map((player) => {
+                    idAscending.map((player) => {
                         return (
                             <Card style={[gameStyles.game]} key={player.id}>
                                 <Card.Title titleVariant='titleLarge' titleStyle={{ alignSelf: 'center', color: colours.textPrimary, fontWeight: 'bold' }} title={player.username} />
