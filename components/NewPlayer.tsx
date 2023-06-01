@@ -1,28 +1,66 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Button, Dialog, Portal, PaperProvider, Text } from 'react-native-paper';
+import { SafeAreaView, StyleSheet, TextInput } from 'react-native';
+import colours from '../constants/colours';
 
 interface Props {
   visible: boolean;
+  setPlayers: React.Dispatch<React.SetStateAction<{
+    id: number;
+    username: string;
+    score: number;
+  }[]>>;
   onClose: () => void;
 }
 
-const NewPlayer = ({ visible, onClose }: Props) => {
+
+
+const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
+
+  const [name, setName] = React.useState('');
+
   return (
     <View>
       <Portal>
         <Dialog visible={visible} onDismiss={onClose}>
-          <Dialog.Title>Alert</Dialog.Title>
+          <Dialog.Title>Player Name</Dialog.Title>
           <Dialog.Content>
-            <Text variant="bodyMedium">This is simple dialog</Text>
+            <Text variant="bodyMedium">Please Enter Your Name:</Text>
+            <SafeAreaView>
+              <TextInput
+                style={dialogStyles.input}
+                onChangeText={setName}
+                value={name}
+              />
+
+            </SafeAreaView>
+
           </Dialog.Content>
           <Dialog.Actions>
-            <Button onPress={onClose}>Done</Button>
+            <Button onPress={onClose}>Cancel</Button>
+            <Button onPress={() => {
+              setPlayers(players => [...players, { id: players.length, username: name, score: 0 }]);
+              onClose();
+            }}>Add</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>
     </View>
   );
 };
+
+const dialogStyles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: colours.backgroundMain,
+    color: colours.textPrimary,
+
+  },
+
+});
 
 export default NewPlayer;

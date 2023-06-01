@@ -10,6 +10,7 @@ import { SegmentedButtons } from 'react-native-paper';
 import { ScrollView } from 'react-native';
 import { Dialog, Portal } from 'react-native-paper';
 import NewPlayer from '../components/NewPlayer';
+import {SafeAreaView, TextInput} from 'react-native';
 
 
 const PlayGame = () => {
@@ -21,6 +22,8 @@ const PlayGame = () => {
 
     const [value, setValue] = React.useState('');           //for the segmented buttons
     const [newPlayerVisible, setNewPlayerVisible] = React.useState(false);
+
+    
 
 
 
@@ -145,14 +148,13 @@ const PlayGame = () => {
                 <TouchableOpacity>
                     <Button style={gameStyles.new} onPress={() => {
                         setNewPlayerVisible(true);
-                        // setPlayers(players => [...players, { id: players.length, username: `Player${players.length}`, score: 0 }]);
                     }}>Add new player</Button>
                 </TouchableOpacity>
 
-                <NewPlayer visible={newPlayerVisible} onClose={() => setNewPlayerVisible(false)} />
+                <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers}  onClose={() => setNewPlayerVisible(false)}></NewPlayer> 
 
             </View>
-        </ScrollView >
+        </ScrollView>
     )
 };
 
