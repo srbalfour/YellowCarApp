@@ -19,16 +19,13 @@ const PlayGame = () => {
 
     const idAscending = [...players].sort((a, b) => a.id - b.id);
     console.log(idAscending);
-    
-    
+
+
 
     return (
         <ScrollView style={gameStyles.scroll}>
             <View style={{ flex: 1, gap: 10, marginTop: 10, marginHorizontal: 10 }}>
                 {
-                    /* ***************************
-                     * sort order players are displayed in based on ID
-                     ******************************/
 
                     idAscending.map((player) => {
                         return (
@@ -68,6 +65,13 @@ const PlayGame = () => {
                                                             },
                                                             uncheckedColor: colours.textSecondary,
                                                             checkedColor: colours.textSecondary,
+                                                            onPress(event) {
+                                                                setPlayers((players) => {
+                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
+                                                                    const modPlayer = { ...player, score: player.score + 1 };
+                                                                    return [...existingPlayers, modPlayer];
+                                                                });
+                                                            },
                                                         },
                                                     ]}
                                                 />
@@ -93,7 +97,13 @@ const PlayGame = () => {
                                                             },
                                                             uncheckedColor: colours.textSecondary,
                                                             checkedColor: colours.textSecondary,
-
+                                                            onPress(event) {
+                                                                setPlayers((players) => {
+                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
+                                                                    const modPlayer = { ...player, score: player.score - 1 };
+                                                                    return [...existingPlayers, modPlayer];
+                                                                });
+                                                            },
                                                         },
                                                         {
                                                             value: 'remove three',
@@ -103,6 +113,13 @@ const PlayGame = () => {
                                                             },
                                                             uncheckedColor: colours.textSecondary,
                                                             checkedColor: colours.textSecondary,
+                                                            onPress(event) {
+                                                                setPlayers((players) => {
+                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
+                                                                    const modPlayer = { ...player, score: player.score - 3 };
+                                                                    return [...existingPlayers, modPlayer];
+                                                                });
+                                                            },
                                                         },
                                                     ]}
                                                 />
