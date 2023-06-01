@@ -12,21 +12,21 @@ import { Dialog, Portal } from 'react-native-paper';
 import NewPlayer from '../components/NewPlayer';
 import { SafeAreaView, TextInput } from 'react-native';
 import Icon from 'react-native-paper/lib/typescript/src/components/Icon';
+import SegmentButtonMinus from '../components/SegmentButtonMinus';
+import SegmentedButtonPlus from '../components/SegmentedButtonPlus';
 
+export type Player = {
+    id: number;
+    username: string;
+    score: number;
+}
 
 const PlayGame = () => {
-    const [players, setPlayers] = useState([
-        // { id: 0, username: "Player0", score: 0 },
-        // { id: 1, username: "Player1", score: 0 },
-    ]);
+    const [players, setPlayers] = useState<Player[]>([]);
 
 
-    const [value, setValue] = React.useState('');           //for the segmented buttons
+    const [segmentedButtonValue, setSegmentedButtonValue] = React.useState('');           //for the segmented buttons
     const [newPlayerVisible, setNewPlayerVisible] = React.useState(false);
-
-
-
-
 
     const idAscending = [...players].sort((a, b) => a.id - b.id);       //sorts array so that players are in joining order
 
@@ -46,59 +46,13 @@ const PlayGame = () => {
                                     right={(props) => <TouchableOpacity {...props}>
                                         <IconButton icon="window-close" iconColor={colours.textSecondary} onPress={() => setPlayers((players) => {
                                             return players.filter((p) => p.id !== player.id)
-                                        })}/>
+                                        })} />
                                     </TouchableOpacity>} />
 
                                 <Card.Content>
                                     <View style={[gameStyles.flex]}>
                                         <View style={{ flex: 2 }}>
-
-
-
-                                            <TouchableOpacity>
-                                                <SegmentedButtons
-                                                    style={gameStyles.buttons}
-                                                    value={value}
-                                                    onValueChange={setValue}
-                                                    buttons={[
-                                                        {
-                                                            value: 'add three',
-                                                            label: '+ 3',
-                                                            style: {
-                                                                backgroundColor: colours.backgroundMain,
-                                                            },
-                                                            uncheckedColor: colours.textSecondary,
-                                                            checkedColor: colours.textSecondary,
-                                                            onPress(event) {
-                                                                setPlayers((players) => {
-                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
-                                                                    const modPlayer = { ...player, score: player.score + 3 };
-                                                                    return [...existingPlayers, modPlayer];
-                                                                });
-                                                            },
-                                                        },
-                                                        {
-                                                            value: 'add one',
-                                                            label: '+ 1',
-                                                            style: {
-                                                                backgroundColor: colours.backgroundMain,
-                                                            },
-                                                            uncheckedColor: colours.textSecondary,
-                                                            checkedColor: colours.textSecondary,
-                                                            onPress(event) {
-                                                                setPlayers((players) => {
-                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
-                                                                    const modPlayer = { ...player, score: player.score + 1 };
-                                                                    return [...existingPlayers, modPlayer];
-                                                                });
-                                                            },
-                                                        },
-                                                    ]}
-                                                />
-                                            </TouchableOpacity>
-
-
-
+                                          <SegmentedButtonPlus  player={player} segmentedButtonValue={segmentedButtonValue} setSegmentedButtonValue={setSegmentedButtonValue} setPlayers={setPlayers} />
                                         </View>
 
                                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -106,47 +60,7 @@ const PlayGame = () => {
                                         </View>
 
                                         <View style={{ flex: 2 }}>
-                                            <TouchableOpacity>
-                                                <SegmentedButtons
-                                                    style={gameStyles.buttons}
-                                                    value={value}
-                                                    onValueChange={setValue}
-                                                    buttons={[
-                                                        {
-                                                            value: 'remove one',
-                                                            label: '- 1',
-                                                            style: {
-                                                                backgroundColor: colours.backgroundMain,
-                                                            },
-                                                            uncheckedColor: colours.textSecondary,
-                                                            checkedColor: colours.textSecondary,
-                                                            onPress(event) {
-                                                                setPlayers((players) => {
-                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
-                                                                    const modPlayer = { ...player, score: player.score - 1 };
-                                                                    return [...existingPlayers, modPlayer];
-                                                                });
-                                                            },
-                                                        },
-                                                        {
-                                                            value: 'remove three',
-                                                            label: '- 3',
-                                                            style: {
-                                                                backgroundColor: colours.backgroundMain,
-                                                            },
-                                                            uncheckedColor: colours.textSecondary,
-                                                            checkedColor: colours.textSecondary,
-                                                            onPress(event) {
-                                                                setPlayers((players) => {
-                                                                    const existingPlayers = players.filter(({ id }) => id !== player.id);
-                                                                    const modPlayer = { ...player, score: player.score - 3 };
-                                                                    return [...existingPlayers, modPlayer];
-                                                                });
-                                                            },
-                                                        },
-                                                    ]}
-                                                />
-                                            </TouchableOpacity>
+                                            <SegmentButtonMinus player={player} segmentedButtonValue={segmentedButtonValue} setSegmentedButtonValue={setSegmentedButtonValue} setPlayers={setPlayers} />
                                         </View>
 
 
@@ -203,8 +117,6 @@ const gameStyles = StyleSheet.create({
     scroll: {
         marginBottom: 80,
     },
-
-
 });
 
 
