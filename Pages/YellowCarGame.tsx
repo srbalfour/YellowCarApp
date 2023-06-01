@@ -8,6 +8,9 @@ import { Card, Button, Text } from 'react-native-paper';
 import React, { Component, useState } from 'react';
 import { SegmentedButtons } from 'react-native-paper';
 import { ScrollView } from 'react-native';
+import { Dialog, Portal } from 'react-native-paper';
+import NewPlayer from '../components/NewPlayer';
+
 
 const PlayGame = () => {
     const [players, setPlayers] = useState([
@@ -15,10 +18,13 @@ const PlayGame = () => {
         { id: 1, username: "Player1", score: 0 },
     ]);
 
-    const [value, setValue] = React.useState('');           //for the segmented buttons
 
-    const idAscending = [...players].sort((a, b) => a.id - b.id);
-    console.log(idAscending);
+    const [value, setValue] = React.useState('');           //for the segmented buttons
+    const [newPlayerVisible, setNewPlayerVisible] = React.useState(false);
+
+
+
+    const idAscending = [...players].sort((a, b) => a.id - b.id);       //sorts array so that players are in joining order
 
 
 
@@ -135,11 +141,16 @@ const PlayGame = () => {
                         )
                     })
                 }
+
                 <TouchableOpacity>
                     <Button style={gameStyles.new} onPress={() => {
-                        setPlayers(players => [...players, { id: players.length, username: `Player${players.length}`, score: 0 }]);
+                        setNewPlayerVisible(true);
+                        // setPlayers(players => [...players, { id: players.length, username: `Player${players.length}`, score: 0 }]);
                     }}>Add new player</Button>
                 </TouchableOpacity>
+
+                <NewPlayer visible={newPlayerVisible} onClose={() => setNewPlayerVisible(false)} />
+
             </View>
         </ScrollView >
     )
