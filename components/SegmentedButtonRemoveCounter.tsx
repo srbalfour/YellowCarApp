@@ -21,16 +21,22 @@ const SegmentedButtonRemoveCounter = ({ count, setCount }: Props) => {
                 buttons={[{
                     value: 'add one',
                     label: '- 1',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleDecrement(1),
                 },
                 {
                     value: 'add half',
                     label: '- 0.5',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleDecrement(0.5),
                 },
                 {
                     value: 'add quarter',
                     label: '- 0.25',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleDecrement(0.25),
                 }
                 ]}
@@ -39,7 +45,7 @@ const SegmentedButtonRemoveCounter = ({ count, setCount }: Props) => {
     )
 }
 
-export default SegmentedButtonRemoveCounter
+export default SegmentedButtonRemoveCounter;
 
 const counterButtonsPlus = StyleSheet.create({
     buttons: {

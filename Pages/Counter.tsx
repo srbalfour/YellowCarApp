@@ -12,13 +12,13 @@ const Counter = () => {
 
     return (
 
-        <View style={counterStyles.counter}>
+        <View style={counterStyles.buttons}>
             <View>
                 <SegmentedButtonAddCounter count={count} setCount={setCount} />
             </View>
 
-            <View>
-                <Text>{count}</Text>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={counterStyles.counter}>{count}</Text>
             </View>
 
             <View>
@@ -32,7 +32,17 @@ const Counter = () => {
 
 const counterStyles = StyleSheet.create({
     counter: {
-
+        color: colours.textPrimary,
+        fontSize: 100,
+        alignItems: 'center',
+        marginBottom: 20,
+        marginTop: 20,
+    },
+    buttons: {
+        flex: 1,
+        flexDirection: 'column',
+        margin: 30,
+        justifyContent: 'space-evenly',
     },
 });
 

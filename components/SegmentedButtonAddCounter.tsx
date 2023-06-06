@@ -17,20 +17,26 @@ const SegmentedButtonAddCounter = ({ count, setCount }: Props) => {
 
     return (
         <TouchableOpacity>
-            <SegmentedButtons style={counterButtonsPlus.buttons} value={segmentedButtonValue} onValueChange={setSegmentedButtonValue}
+            <SegmentedButtons style={counterButtonsPlus.buttons} value={segmentedButtonValue} onValueChange={() => null}
                 buttons={[{
                     value: 'add one',
                     label: '+ 1',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleIncrement(1),
                 },
                 {
                     value: 'add half',
                     label: '+ 0.5',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleIncrement(0.5),
                 },
                 {
                     value: 'add quarter',
                     label: '+ 0.25',
+                    uncheckedColor: colours.textSecondary,
+                    checkedColor: colours.textSecondary,
                     onPress: () => handleIncrement(0.25),
                 }
                 ]}
@@ -39,7 +45,7 @@ const SegmentedButtonAddCounter = ({ count, setCount }: Props) => {
     )
 }
 
-export default SegmentedButtonAddCounter
+export default SegmentedButtonAddCounter;
 
 const counterButtonsPlus = StyleSheet.create({
     buttons: {
