@@ -5,14 +5,12 @@ import { Text, Button } from 'react-native-paper';
 import SegmentButtonMinus from '../components/SegmentButtonMinus';
 import SegmentedButtonPlus from '../components/SegmentedButtonPlus';
 import SegmentedButtonAddCounter from '../components/SegmentedButtonAddCounter';
+import SegmentedButtonRemoveCounter from '../components/SegmentedButtonRemoveCounter';
 
 const Counter = () => {
     const [count, setCount] = React.useState(0);
 
     return (
-
-
-        //  <Text>Welcome to the counter.</Text>
 
         <View style={counterStyles.counter}>
             <View>
@@ -24,7 +22,7 @@ const Counter = () => {
             </View>
 
             <View>
-
+                <SegmentedButtonRemoveCounter count={count} setCount={setCount} />
             </View>
 
 
