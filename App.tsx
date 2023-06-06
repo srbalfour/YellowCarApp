@@ -7,6 +7,7 @@ import BottomBar from './components/BottomBar';
 import PlayGame from './Pages/YellowCarGame';
 import colours from './constants/colours';
 import { PaperProvider } from 'react-native-paper';
+import Counter from './Pages/Counter'
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
           <TopBarComponent></TopBarComponent>
 
 
-          <PlayGame></PlayGame>
+          {/* <PlayGame></PlayGame> */}
+          <Counter />
           
 
           <StatusBar style="auto" />
