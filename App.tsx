@@ -8,6 +8,13 @@ import PlayGame from './Pages/YellowCarGame';
 import colours from './constants/colours';
 import { PaperProvider } from 'react-native-paper';
 import Counter from './Pages/Counter'
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import YellowCarGame from './Pages/YellowCarGame';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -21,8 +28,14 @@ export default function App() {
 
 
           {/* <PlayGame></PlayGame> */}
-          <Counter />
-          
+          {/* <Counter /> */}
+
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen name="Home" component={YellowCarGame} />
+            </Stack.Navigator>
+          </NavigationContainer>
+
 
           <StatusBar style="auto" />
 

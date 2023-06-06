@@ -6,15 +6,28 @@ import App from '../App';
 import { BottomNavigation } from 'react-native-paper';
 import PlayGame from '../Pages/YellowCarGame';
 import Counter from '../Pages/Counter';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
+
+//const {page, showPage} = React.UseState{PlayGame};
 
 const BottomBar = () => (
     <Appbar style={bottomStyles.bottom}>
-        <Appbar.Action icon="play" iconColor={colours.textSecondary} onPress={() => {  }} />
+        <Appbar.Action icon="play" iconColor={colours.textSecondary} onPress={() => {
+            <View>
+                <PlayGame />
+            </View>
+
+        }} />
 
         <View style={bottomStyles.verticalLine}></View>
 
-        <Appbar.Action icon="unsorted" iconColor={colours.textSecondary}  onPress={() => {  }} />
+        <Appbar.Action icon="unsorted" iconColor={colours.textSecondary} onPress={() => {
+            <View>
+                <Counter />
+            </View>
+
+        }} />
 
     </Appbar>
 );
