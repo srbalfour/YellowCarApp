@@ -76,7 +76,7 @@ const PlayGame = () => {
                 <TouchableOpacity>
                     <Button style={gameStyles.new} onPress={() => {
                         setNewPlayerVisible(true);
-                    }}>Add new player</Button>
+                    }} textColor={colours.textPrimary}>Add new player</Button>
                 </TouchableOpacity>
 
                 <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers} onClose={() => setNewPlayerVisible(false)}></NewPlayer>
