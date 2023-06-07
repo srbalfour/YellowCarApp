@@ -10,11 +10,20 @@ import { PaperProvider } from 'react-native-paper';
 import Counter from './Pages/Counter'
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import YellowCarGame from './Pages/YellowCarGame';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
-const Stack = createStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: colours.backgroundMain,
+  },
+};
 
 export default function App() {
   return (
@@ -24,23 +33,30 @@ export default function App() {
       <SafeAreaProvider>
         <View style={styles.container}>
 
-          <TopBarComponent></TopBarComponent>
+          <TopBarComponent />
 
-
-          {/* <PlayGame></PlayGame> */}
-          {/* <Counter /> */}
-
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" component={YellowCarGame} />
-            </Stack.Navigator>
+          <NavigationContainer theme={theme}>
+            <Tab.Navigator initialRouteName="YellowCar" labeled={false} activeColor={colours.backgroundNav}  barStyle={{ backgroundColor: colours.backgroundNav }}>
+              <Tab.Screen name="YellowCar" component={YellowCarGame}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <AwesomeIcon name="play" color={colours.textSecondary} size={26} />
+                ),
+              }}
+              />
+              <Tab.Screen name="Counter" component={Counter} 
+              
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <AwesomeIcon name="unsorted" color={colours.textSecondary} size={26} />
+                ),
+                
+              }}
+              />
+            </Tab.Navigator>
           </NavigationContainer>
 
-
           <StatusBar style="auto" />
-
-          <BottomBar></BottomBar>
-
         </View>
       </SafeAreaProvider>
     </PaperProvider>

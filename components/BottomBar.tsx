@@ -9,24 +9,20 @@ import Counter from '../Pages/Counter';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 
-//const {page, showPage} = React.UseState{PlayGame};
+interface Props {
+    navigation: any;
+}
 
-const BottomBar = () => (
+const BottomBar = ({ navigation }: Props) => (
     <Appbar style={bottomStyles.bottom}>
         <Appbar.Action icon="play" iconColor={colours.textSecondary} onPress={() => {
-            <View>
-                <PlayGame />
-            </View>
-
+            navigation.navigate('YellowCar')
         }} />
 
         <View style={bottomStyles.verticalLine}></View>
 
         <Appbar.Action icon="unsorted" iconColor={colours.textSecondary} onPress={() => {
-            <View>
-                <Counter />
-            </View>
-
+            navigation.navigate('Counter')
         }} />
 
     </Appbar>
