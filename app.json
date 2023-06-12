@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FDFDD8"
-      }
+      },
+      "package": "com.srbalfour.YellowCarApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c9bfefe7-acde-4300-b8c4-3dd16e9ff106"
+      }
     }
   }
 }
