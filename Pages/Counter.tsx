@@ -23,7 +23,16 @@ const Counter = () => {
 
             <View>
                 <SegmentedButtonRemoveCounter count={count} setCount={setCount} />
+               
+                <TouchableOpacity>
+                    <Button style={counterStyles.clear} onPress={() => {
+                        setCount(0);
+                    }} textColor={colours.textPrimary}>Clear</Button>
+                </TouchableOpacity>
             </View>
+
+
+
 
 
         </View>
@@ -43,6 +52,10 @@ const counterStyles = StyleSheet.create({
         flexDirection: 'column',
         margin: 30,
         justifyContent: 'space-evenly',
+    },
+    clear: {
+        backgroundColor: colours.backgroundMain,
+        colour: colours.textPrimary,
     },
 });
 
