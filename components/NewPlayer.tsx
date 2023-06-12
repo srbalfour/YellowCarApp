@@ -12,25 +12,33 @@ interface Props {
     score: number;
   }[]>>;
   onClose: () => void;
+  onClear: string;
 }
 
 
 
-const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
+const NewPlayer = ({ visible, setPlayers, onClose, onClear }: Props) => {
 
   const [name, setName] = React.useState('');
+  
 
-/******************MAKE SURE USER ENTERS NAME AND NAME IS NOT IN USE
-                    ADD GAME RULES TO ABOUT PAGE******************/
+
+/******************MAKE SURE USER ENTERS NAME AND NAME IS NOT IN USE******************/
+
 
   return (
+
+    
+
     <View>
       <Portal>
         <Dialog visible={visible} onDismiss={onClose} style={dialogStyles.dialog}>
           <Dialog.Title style={{ color: colours.textPrimary }}>Player Name</Dialog.Title>
           <Dialog.Content>
             <Text style={{ color:colours.textSecondary }} variant="bodyMedium">Please Enter Your Name:</Text>
+            
             <SafeAreaView>
+            
               <TextInput
                 style={dialogStyles.input}
                 onChangeText={setName}
@@ -44,13 +52,23 @@ const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
           <Dialog.Actions>
             <Button onPress={onClose} textColor={colours.textPrimary}>Cancel</Button>
             <Button onPress={() => {
-              setPlayers(players => [...players, { id: players.length, username: name, score: 0 }]);
-              onClose();
+              if(name.trim().length != 0){
+                setPlayers(players => [...players, { id: players.length, username: name, score: 0 }]);
+                onClose();
+              }
+              else{
+                <Text style={{ fontSize:10, color: colours.textSecondary }}>Please enter a name.</Text>
+              }
+              setName('');
             }} textColor={colours.textPrimary}>Add</Button>
           </Dialog.Actions>
+          
         </Dialog>
+        
       </Portal>
     </View>
+
+
   );
 };
 
