@@ -20,7 +20,8 @@ const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
 
   const [name, setName] = React.useState('');
 
-//******************MAKE SURE USER ENTERS NAME AND NAME IS NOT IN USE******************/
+/******************MAKE SURE USER ENTERS NAME AND NAME IS NOT IN USE
+                    ADD GAME RULES TO ABOUT PAGE******************/
 
   return (
     <View>

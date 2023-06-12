@@ -21,6 +21,11 @@ const About = ({visible, onClose}: Props) => {
 
                     <Dialog.Content>
                         <Text style={{ fontSize:10, color: colours.textSecondary }}>App by Shanna Balfour, 2023. Visit https://github.com/srbalfour/YellowCarApp to see more.</Text>
+                        <Text> </Text>
+                        <Text style={{ fontSize:15, color: colours.textPrimary }}>Rules</Text>
+                        <Text style={{ fontSize: 12, color: colours.textSecondary }}>1. Yellow cars are worth 1 point</Text>
+                        <Text style={{ fontSize: 12, color: colours.textSecondary }}>2. Purple cars are worth 3 points</Text>
+                        <Text style={{ fontSize: 12, color: colours.textSecondary }}>3. The first player to reach 6 points wins</Text>
                     </Dialog.Content>
 
                     <Dialog.Actions>
