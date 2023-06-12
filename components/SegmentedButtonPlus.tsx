@@ -1,8 +1,9 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import colours from '../constants/colours';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SegmentedButtons } from 'react-native-paper';
 import { Player } from '../Pages/YellowCarGame';
+import GameRules from './GameRules';
 
 interface Props {
     segmentedButtonValue: string;
@@ -20,40 +21,51 @@ const SegmentButtonPlus = ({ player, segmentedButtonValue, setSegmentedButtonVal
         });
     }
 
+    const [gameWon, setGameWon] = React.useState(false);
+
+    useEffect(() => {
+        if (player.score >= 6) {
+            setGameWon(true);
+        }
+    }, [player.score]);
+
     return (
-        <TouchableOpacity>
-            <SegmentedButtons
-                style={buttonStylesPlus.buttons}
-                value={segmentedButtonValue}
-                onValueChange={setSegmentedButtonValue}
-                buttons={[
-                    {
-                        value: 'add three',
-                        label: '+ 3',
-                        style: {
-                            backgroundColor: colours.backgroundMain,
+        <>
+            <TouchableOpacity>
+                <SegmentedButtons
+                    style={buttonStylesPlus.buttons}
+                    value={segmentedButtonValue}
+                    onValueChange={setSegmentedButtonValue}
+                    buttons={[
+                        {
+                            value: 'add three',
+                            label: '+ 3',
+                            style: {
+                                backgroundColor: colours.backgroundMain,
+                            },
+                            uncheckedColor: colours.textSecondary,
+                            checkedColor: colours.textSecondary,
+                            onPress(event) {
+                                incrementScore(3)
+                            },
                         },
-                        uncheckedColor: colours.textSecondary,
-                        checkedColor: colours.textSecondary,
-                        onPress(event) {
-                            incrementScore(3)
+                        {
+                            value: 'add one',
+                            label: '+ 1',
+                            style: {
+                                backgroundColor: colours.backgroundMain,
+                            },
+                            uncheckedColor: colours.textSecondary,
+                            checkedColor: colours.textSecondary,
+                            onPress(event) {
+                                incrementScore(1)
+                            },
                         },
-                    },
-                    {
-                        value: 'add one',
-                        label: '+ 1',
-                        style: {
-                            backgroundColor: colours.backgroundMain,
-                        },
-                        uncheckedColor: colours.textSecondary,
-                        checkedColor: colours.textSecondary,
-                        onPress(event) {
-                            incrementScore(1)
-                        },
-                    },
-                ]}
-            />
-        </TouchableOpacity>
+                    ]}
+                />
+            </TouchableOpacity>
+            <GameRules visible={gameWon} player={player} onClose={() => setGameWon(false)} />
+        </>
     )
 }
 

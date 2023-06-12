@@ -24,6 +24,8 @@ export type Player = {
 const PlayGame = () => {
     const [players, setPlayers] = useState<Player[]>([]);
 
+    
+
 
     const [segmentedButtonValue, setSegmentedButtonValue] = React.useState('');           //for the segmented buttons
     const [newPlayerVisible, setNewPlayerVisible] = React.useState(false);
@@ -52,7 +54,7 @@ const PlayGame = () => {
                                 <Card.Content>
                                     <View style={[gameStyles.flex]}>
                                         <View style={{ flex: 2 }}>
-                                          <SegmentedButtonPlus  player={player} segmentedButtonValue={segmentedButtonValue} setSegmentedButtonValue={setSegmentedButtonValue} setPlayers={setPlayers} />
+                                            <SegmentedButtonPlus player={player} segmentedButtonValue={segmentedButtonValue} setSegmentedButtonValue={setSegmentedButtonValue} setPlayers={setPlayers} />
                                         </View>
 
                                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
