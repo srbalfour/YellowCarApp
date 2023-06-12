@@ -22,6 +22,7 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     background: colours.backgroundMain,
+    secondaryContainer: 'transparent',
   },
 };
 
