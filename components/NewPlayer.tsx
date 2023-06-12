@@ -39,11 +39,11 @@ const NewPlayer = ({ visible, setPlayers, onClose }: Props) => {
 
           </Dialog.Content>
           <Dialog.Actions>
-            <Button onPress={onClose}>Cancel</Button>
+            <Button onPress={onClose} textColor={colours.textPrimary}>Cancel</Button>
             <Button onPress={() => {
               setPlayers(players => [...players, { id: players.length, username: name, score: 0 }]);
               onClose();
-            }}>Add</Button>
+            }} textColor={colours.textPrimary}>Add</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>

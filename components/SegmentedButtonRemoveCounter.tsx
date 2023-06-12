@@ -17,7 +17,7 @@ const SegmentedButtonRemoveCounter = ({ count, setCount }: Props) => {
 
     return (
         <TouchableOpacity>
-            <SegmentedButtons style={counterButtonsPlus.buttons} value={segmentedButtonValue} onValueChange={setSegmentedButtonValue}
+            <SegmentedButtons style={counterButtonsPlus.buttons} value={segmentedButtonValue} onValueChange={() => null}
                 buttons={[{
                     value: 'add one',
                     label: '- 1',
