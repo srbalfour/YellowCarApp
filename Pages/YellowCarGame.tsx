@@ -81,7 +81,7 @@ const PlayGame = () => {
                     }} textColor={colours.textPrimary}>Add new player</Button>
                 </TouchableOpacity>
 
-                <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers} onClose={() => setNewPlayerVisible(false)}></NewPlayer>
+                <NewPlayer visible={newPlayerVisible} setPlayers={setPlayers} onClose={() => setNewPlayerVisible(false)} onClear={''}></NewPlayer>
 
             </View>
         </ScrollView>
